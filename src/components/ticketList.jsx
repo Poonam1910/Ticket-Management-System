@@ -159,7 +159,7 @@ class TicketList extends Component {
                 /> 
                 </Fragment>: 
                 <Table striped bordered dark > 
-                   <thead style={{backgroundColor:"lightsteelblue", color:"black"}}> 
+                   <thead> 
                    <tr style={{textAlign:"center"}}>                     
                     <td> <b >Title</b>  </td>                  
                    </tr>
