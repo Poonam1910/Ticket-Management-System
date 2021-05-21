@@ -25,7 +25,7 @@ describe ('Home Page', () => {
             .should('have.attr', 'href', '/tickets')
             .and('contain', 'Tickets')            
             .get('a', { timeout: 10000 })                     
-            .and('contain', 'Users')   
+            .and('contain', 'Users')
             .should('be.visible')                 
             .get('label',{ timeout: 10000 })
             .should('be.visible')      

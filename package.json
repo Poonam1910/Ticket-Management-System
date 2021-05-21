@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@cypress/react": "^5.8.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "bootstrap": "^5.0.1",
     "dotenv": "^9.0.2",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
@@ -34,7 +36,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "node_modules/.bin/cypress open",
+    "cypress:open": "cypress open",
     "cypressrun": "npx cypress run --record --key 9af2e09b-7cb6-4f72-b3db-8104227b7a54"
   },
   "eslintConfig": {

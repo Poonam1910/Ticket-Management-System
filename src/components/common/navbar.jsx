@@ -23,7 +23,7 @@ class Navbar extends Component {
   renderMenu() {  
    if (this.props.isSignedIn) {
       return (
-        <React.Fragment>         
+        <React.Fragment>                   
           <NavLink to="/tickets" className="item">
             <h3>Tickets</h3>
           </NavLink>

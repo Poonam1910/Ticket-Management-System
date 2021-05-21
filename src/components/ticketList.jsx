@@ -123,7 +123,7 @@ class TicketList extends Component {
             
          <Table style={{"border":"outset"}}>
              <tbody>
-             <tr>
+             <tr id="tktFilter">
               <td>
               <Select options = {this.state.taskTypes}
               onChange={this.handleTicketTypeChange} 
