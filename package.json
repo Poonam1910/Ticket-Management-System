@@ -6,16 +6,36 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
+    "dotenv": "^9.0.2",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "joi-browser": "^13.4.0",
+    "lodash": "^4.17.21",
+    "loggly": "^1.1.1",
+    "loggly-jslogger": "^2.2.4",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
+    "react-redux": "^7.2.4",
+    "react-scripts": "^4.0.3",
+    "react-select": "^4.3.1",
+    "react-toastify": "^7.0.4",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
+    "register-service-worker": "^1.7.2",
+    "semantic-ui-react": "^2.0.3",
+    "uuidv4": "^6.2.8",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress": "node_modules/.bin/cypress open",
+    "cypressrun": "npx cypress run --record --key 9af2e09b-7cb6-4f72-b3db-8104227b7a54"
   },
   "eslintConfig": {
     "extends": [
