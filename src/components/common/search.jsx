@@ -1,7 +1,8 @@
 const Search = ({value, onChange}) => {
     return ( 
         <div className="input-group input-group-mb3">
-        <input
+        <input 
+          id="searchTxt"
           type="text"
           className="form-control"
           placeholder= "Search Ticket"

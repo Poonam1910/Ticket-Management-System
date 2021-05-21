@@ -1,5 +1,6 @@
 
 import React from "React"
+import { copy } from "../../../server/api/ticket"
 //import { mount } from '@cypress/react' // or @cypress/vue
 //import TicketTable from '../../src/components/ticketTable'
 
@@ -17,63 +18,52 @@ const tickets = [
 describe('TicketList', () => {
 
   beforeEach(() => {
-    cy.visit('/')   
+    cy.visit('/')
+    .get('#SignInAdmin',{ timeout: 10000 })
+    .click()
+    .get('a:first')
+    .click()  
   })
 
   //create-ticket  -admin
-  it('Create Ticket Access for Admin ', () => {
-    cy.get('#SignInAdmin',{ timeout: 10000 })
-    .click()
-    .get('a:first')
-    .click()
-    .get('.btn-primary',{ timeout: 10000 })   
+  it('Create Ticket Access for Admin ', () => {    
+    cy.get('.btn-primary',{ timeout: 10000 })   
     .and('contain', 'Create Ticket') 
     .should('be.visible')
   })
 
 //create-ticket  -user
   it('No Create Ticket Access for Users ', () => {
-    cy.get('#SignInUser',{ timeout: 10000 })
-    .click()
-    .get('a:first')
-    .click()
-    .get('.btn-primary').should('not.exist');
-  })
-  
-  //ticket filter task type option
-  it('Ticket Task Type Filter  options ', () => {
-    cy.get('#SignInUser',{ timeout: 10000 })
-    .click()
-    .get('a:first')
-    .click()
-    .get('#tktFilter',{ timeout: 10000 })
-    .get('td:first')
-    .and('contain', 'All Types') 
-    .should('be.visible')
+    cy.get('.btn-primary').should('not.exist');
   })
 
-  //ticket filter task priority option
-  it('Ticket Priority Filter options ', () => {
-    cy.get('#SignInUser',{ timeout: 10000 })
-    .click()
-    .get('a:first')
-    .click()
-    .get('#tktFilter',{ timeout: 10000 })
-    .get('td:nth-child(2)')
-    .and('contain', 'All Priority') 
-    .should('be.visible')       
-  })
+  // //ticket filter task priority option
+  // it.only('Ticket Priority Filter options ', () => {   
+  //   cy.get('#tktFilter',{ timeout: 10000 })
+  //   .get('td:nth-child(2)')
+  //   .and('contain', 'All Priority') 
+  //   .should('be.visible')
+  
+    // .get('[id^="react-select-"]').contains('P 1')
+    // .click() 
+    // .get("#dTable td:nth-child(2)").each(($e1, index) => {
+    //   const text = $e1.text();
+    //   if (text.includes("Google")) {
+    //     cy.get("td:nth-child(2)")
+    //       .eq(index)
+    //       .then(function(Field) {
+    //       const Fieldtext = Field.text();
+    //       expect(Fieldtext).to.equal("P 1");
+    //     })  
+    //   }})
+    })
 
    //ticket search option
-  it('Ticket Filter options ', () => {
-    cy.get('#SignInUser',{ timeout: 10000 })
-    .click()
-    .get('a:first')
-    .click()
-    .get('#tktFilter',{ timeout: 10000 })
-    .get('td:nth-child(3)')
-    .and('contain', 'Search Ticket') 
-    .should('be.visible')
+  it('Ticket Filter options ', () => {   
+    cy.get('#searchTxt',{ timeout: 10000 }) 
+    .should('have.attr','placeholder','Search Ticket') 
+    .type('write tests{enter}') //dummy value
+    .get('#dTable').should('have.length', 0)    
   }) 
     
   // it.only('Ticket Filter options ', () => {
