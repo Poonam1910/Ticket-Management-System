@@ -5,7 +5,7 @@ import React from 'react';
 import { Table } from "reactstrap";
 const DTable = ({columns,sortColumn,onSort,data}) => {
     return (
-       <Table id="dTable" striped bordered dark > 
+       <Table id="dTable" striped bordered> 
             <TableHeader columns={columns} sortColumn={sortColumn} onSort={onSort}/>
             <TableBody columns={columns} data={data} />
         </Table>

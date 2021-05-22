@@ -107,8 +107,8 @@ class UserList extends Component {
                   onPageChange={this.handlePageChange}
                 /> 
                 </Fragment>: 
-                <Table striped bordered dark > 
-                   <thead> 
+                <Table striped bordered > 
+                   <thead style={{backgroundColor:"lightsteelblue", color:"black"}}> 
                    <tr style={{textAlign:"center"}}>                     
                     <td> <b >Name</b>  </td>                  
                    </tr>

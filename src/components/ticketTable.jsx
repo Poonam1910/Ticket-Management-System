@@ -3,6 +3,9 @@ import DTable from "./common/dTable";
 import {Link} from "react-router-dom";
 import { connect } from 'react-redux'; 
 import { deleteTicket  } from '../actions/ticketActions';
+import Moment from "react-moment";
+import 'moment/locale/en-sg'
+//import moment from "moment";
 
 class TicketTable extends Component {  
  
@@ -19,7 +22,10 @@ class TicketTable extends Component {
       { path: "projectName", label: "ProjectName" },
       { path: "assigneeId.name", label: "Assigned To" },
       { path: "statusId.label", label: "Status" },
-      { path: "updatedAt", label: "Updated Date" },      
+      { path: "updatedAt", label: "Updated Date" 
+      ,content:ticket=>
+       <Moment  locale date={ticket.updatedAt} format="DD/MM/YYYY HH:mm"></Moment>
+    },      
       {
         key: "delete",
         content: ticket => (

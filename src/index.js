@@ -7,7 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
-
 import reducers from './reducers';
 
 const store = createStore(reducers, applyMiddleware(thunk));
@@ -19,9 +18,6 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

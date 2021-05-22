@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import _ from "lodash";
+//import Moment from "react-moment"
+// import 'moment/locale/en-sg'
+// import moment from "moment";
 
 class TableBody extends Component {
   renderCell = (item, column) => {
     if (column.content){
-      return column.content(item);
+      return column.content(item);      
     }
-    return _.get(item, column.path);
-  };
+  //   else if(column.format)
+  //   {
+  //     return _.get(item, column.path);
+  //     {moment.locale().utc(item).format('DD/MM/YYYY HH:mm')}
+  //   }   
+     return _.get(item, column.path);
+   };
 
   createKey = (item, column) => {
      if(item) return item._id + (column.path || column.key);      

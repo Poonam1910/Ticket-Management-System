@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "react-toastify/dist/ReactToastify.css";
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+
 import React from 'react';
 import {Route,Redirect, BrowserRouter as Router,Switch} from 'react-router-dom'
 import Navbar from './components/common/navbar';
-//import history from './util/history';
 import ErrorBoundry from './components/errorBoundry'
 import TicketList from "./components/ticketList";
 import { ToastContainer } from "react-toastify";
@@ -16,7 +17,7 @@ import UserList from './components/userList';
 const App = () => {
   return (   
     <Router>
-      <div className="ui container">         
+      <div className="ui container" style={{ backgroundColor:'antiquewhite'}}>         
       <ToastContainer />
       <ErrorBoundry>    
       <Navbar/> 
@@ -26,7 +27,7 @@ const App = () => {
       <Route path="/tickets"  component={TicketList} />
       <Route path="/users"  component={UserList} />
       <Route path="/contact" component={ContactUs} />  
-      <Route path="/not-found" component={NotFound} />
+      <Route path="/not-found" component={NotFound} /> 
       <Route path="/home"  component={HomePage} />    
       <Redirect from="/" exact to="/home" />
        <Redirect to="/not-found" />

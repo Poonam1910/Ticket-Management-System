@@ -28,7 +28,7 @@ class HomePage extends React.Component {
     return (
       <Fragment>
         <div className="container pusher">
-          <div
+          <div id="homeImage"
             className="ui vertical masthead center aligned segment"
             style={this.getStyle()}
           >

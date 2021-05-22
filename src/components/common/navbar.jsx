@@ -6,11 +6,13 @@ import SimAuth from '.././simAuth';
 class Navbar extends Component {
   renderDemoBar() {    
  if (this.props.isSignedIn) {
-      return (       
+      return (  
+             
         <div id="logInUsrDetail" className="ui brown ribbon label">
-          <p>SPARES CNX</p>
-          <label>{this.props.user}</label><br/>
-          <label>{this.props.role}</label>
+            <label>SPARES CNX</label> <br/><br/>      
+          <label><i className="user icon"></i>
+          {this.props.user}</label>&nbsp;&nbsp;
+          <label><i className="tags icon"></i>{this.props.role}</label>
         </div> 
         );
     } else {
@@ -28,19 +30,17 @@ class Navbar extends Component {
             <h3>Tickets</h3>
           </NavLink>
           <NavLink to="/users" className="item">
-            <h3>Users</h3>
-          </NavLink>
+            <h3>Users</h3>             
+          </NavLink>         
         </React.Fragment>
       );
     }
      else {
       return (
         <Fragment>
-          <Redirect to="/" />
-            <Link to="/" className="item">
-              <h3>Home</h3>
-            </Link>            
-          </Fragment>
+        <Redirect to="/" />
+                    
+        </Fragment>
       );
    }
   }
@@ -48,15 +48,21 @@ class Navbar extends Component {
   render() {
     return (
       <Fragment>
-        <div className="ui container stackable menu">
+        <div className="ui menu">
           {this.renderDemoBar()}  
           {this.renderMenu()} 
-          <div className="item"  id="SimAuthBar" style={{ paddingLeft: "500px",}}>
+          <div className="item" id="SimAuthBar" >
             <SimAuth />
           </div> 
-          <Link to="/contact" className="right menu ">             
-             <i className="phone icon"></i> <h4>Contact</h4>
-            </Link>      
+          <div className="right menu">
+          <Link to="/" className="item" >            
+             <i className="home icon"></i> <h5>Home</h5>
+            </Link>  
+          <Link to="/contact" className="item">             
+             <i className="phone icon"></i> <h5>Contact</h5>
+            </Link>
+           
+        </div>
         </div>
       </Fragment>
        

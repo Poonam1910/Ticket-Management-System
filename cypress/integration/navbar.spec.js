@@ -38,8 +38,6 @@ describe ('Home Page', () => {
     })
     
 
-     
-
     //Load via SignIn user
     it('Navigation Menu- SignInuser', () => {
         cy.get('#SimAuthBar', { timeout: 10000 })      

@@ -33,8 +33,17 @@
   width:50%;
   
 }
-.disabled-link {
-  pointer-events: none;
+.form-body
+{
+  padding: "25px" "25px" "25px" "25px";
+  width:80%
+}
+.parent {
+  display: flex;
+}
+.child {
+  margin-left: 350px;
+  order: 2;  
 }
 
 @keyframes App-logo-spin {
