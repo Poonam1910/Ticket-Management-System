@@ -13,8 +13,12 @@ import NotFound from './components/notFound'
 import ContactUs from './components/contactUs'
 import HomePage from './components/homePage'
 import UserList from './components/userList';
+import Footer from './components/common/footer'
+import LoginForm from './components/loginForm';
+import LogOut from './components/logout'
 
 const App = () => {
+
   return (   
     <Router>
       <div className="ui container" style={{ backgroundColor:'antiquewhite'}}>         
@@ -28,14 +32,30 @@ const App = () => {
       <Route path="/users"  component={UserList} />
       <Route path="/contact" component={ContactUs} />  
       <Route path="/not-found" component={NotFound} /> 
-      <Route path="/home"  component={HomePage} />    
+      <Route path="/home"  component={HomePage} /> 
+      <Route path="/login" component={LoginForm}/>
+      <Route path="/logOut" component={LogOut}/>   
       <Redirect from="/" exact to="/home" />
        <Redirect to="/not-found" />
-       </Switch>  
+       </Switch> 
+       <Footer /> 
        </ErrorBoundry>  
       </div>
     </Router>
   );
 };
+
+// const mapStateToProps = (state) => {
+//   return {
+//     role: state.auth.role,
+//     department: state.auth.department,
+//     user: state.auth.user,
+//     ticketTypes:state.tickets.types,    
+//     priorities:state.tickets.priorities  
+//   };
+// };
+ 
+// //export default connect(mapStateToProps,{})(App);
+
 
 export default App;

@@ -11,12 +11,12 @@ import { fetchTickets,addTicket,updateTicket ,deleteTicket  } from '../actions/t
 import Select from "react-select"
 import { fetchUsers } from '../actions/userActions';
 import DateSelector from "./common/datePicker"
-//import moment from "moment"
 
 class TicketList extends Component {
+  
   state = {
     currentPage: 1,
-    pageSize: 2,
+    pageSize: 5,
     sortColumn: { path: "updatedAt", order: "asc" },
     search:"",
     selectedType:null,
@@ -24,9 +24,8 @@ class TicketList extends Component {
     taskTypes:[...this.props.ticketTypes,{ value: 4, label: "All Types" }],
     taskpriorities:[...this.props.priorities,{ value: 4, label: "All Priority" }],
     tickets:[],
-    startDate:new Date(), 
-    endDate:new Date()
-    
+    startDate:new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()-7),
+    endDate:new Date()    
   };
 
   updateSearch=(e)=> {
@@ -70,8 +69,7 @@ class TicketList extends Component {
   handleStartDateSelect=startDate=>{
     this.setState({ startDate });
   };
-  handleEndDateSelect=endDate=>{ 
- // if(this.endDate>=this.state.startDate)   
+  handleEndDateSelect=endDate=>{   
     this.setState({ endDate });
   };
 
@@ -80,7 +78,6 @@ class TicketList extends Component {
   };
 
   handleEndDateChange=endDate=>{
-   // if(this.endDate>=this.state.startDate)  
     this.setState({ endDate });
   };
 
@@ -135,14 +132,14 @@ class TicketList extends Component {
   
     return (
       <Fragment> 
-            {this.props.role==='Administrator'?
+            {this.props.userRole==='Administrator'?
             <Link
               to={`/ticket/new`}
               className={`btn btn-primary ${this.props.auth &&
-                this.props.role==='Administrator'?'':'disabled'}`}               
+                this.props.userRole==='Administrator'?'':'disabled'}`}               
               style={{ marginBottom: 20 ,
-                pointerEvents:`${this.props.role
-                    &&this.props.role==='Administrator'?'all':'none'}`}}
+                pointerEvents:`${this.props.userRole
+                    &&this.props.userRole==='Administrator'?'all':'none'}`}}
               >
               Create Ticket
             </Link> :<><br/><br/></>}       
@@ -166,7 +163,8 @@ class TicketList extends Component {
                 <td>
                   <Search
                     value={this.state.search}
-                    onChange={this.updateSearch.bind(this)}          
+                    onChange={this.updateSearch.bind(this)} 
+                    placeholder="Search By Title, Description and Project"         
                   />   
                </td>
               </tr>
@@ -227,8 +225,8 @@ class TicketList extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-      role: state.auth.role,
-      user: state.auth.user,
+      userRole: state.authenticate?state.authenticate.userRole:'',
+      userName: state.authenticate?state.authenticate.userName:'',
       tickets: state.tickets.tickets,
       users: state.users.users,
       ticketTypes:state.tickets.types,

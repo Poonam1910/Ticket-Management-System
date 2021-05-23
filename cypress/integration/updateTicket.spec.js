@@ -18,10 +18,12 @@ describe ('updateTicket', () => {
       });
         
       cy.visit('/')
-      .get('#SignInAdmin',{ timeout: 10000 })
+      .get('#login',{ timeout: 10000 })
       .click()
+      .get('#userName').type('admin')
+      .get('#password').type('admin{enter}')
       .get('a:first')
-      .click()
+      .click()  
       .get('#dTable tr:last td:first',{ timeout: 10000 })   
       .click()
     })
@@ -29,20 +31,22 @@ describe ('updateTicket', () => {
  //auto focus  description
     it('focuses input on description', () => {
       cy.focused()
-      .should('have.attr','type', 'text')
+      .should('have.attr','id', 'description')
     })
 
 //Check Default value in Update Ticket Form based on FormId
   it('Check Default value in Update Ticket Form',()=>{     
     cy.visit('/')
-    .get('#SignInAdmin',{ timeout: 10000 })
-    .click()
-    .get('a:first')
-    .click()
+      .get('#login',{ timeout: 10000 })
+      .click()
+      .get('#userName').type('admin')
+      .get('#password').type('admin{enter}')
+      .get('a:first')
+      .click() 
     .get('#dTable tr:last td:first',{ timeout: 10000 })   
     .click() 
-    .get('input[name=description]',{ timeout: 10000 })
-    .should('have.attr','value','test system') 
+    .get('textarea[name=description]',{ timeout: 10000 })
+    .should('have.value','test system') 
     .get('.btn').and('contain','Save')
     .should('be.visible')    
   })
@@ -53,7 +57,8 @@ describe ('updateTicket', () => {
       [
     {
       "_id":1,       
-      "description":"test cypress"        
+      "description":"test cypress" ,
+      "updatedAt":new Date()        
     }
     ]).as('updateTicket')
     cy.get("form")

@@ -26,10 +26,10 @@ class SimAuth extends React.Component {
   renderAuthButton() {
    if (this.props.isSignedIn === null) {
       return null;
-    } 
+    }  
     else if (this.props.isSignedIn) {
       return (
-        <button className="ui yellow button" id="#SignOut" onClick={this.handleSignOut}>
+        <button className="ui brown button" id="#SignOut" onClick={this.handleSignOut}>
           Sign Out
         </button>
       );

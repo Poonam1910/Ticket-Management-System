@@ -15,7 +15,7 @@ class Form extends Component {
     if (!error) return null;
 
     const errors = {};
-    for (let item of error.details) errors[item.path[0]] = item.message;    
+    for (let item of error.details) errors[item.path[0]] = item.message; 
     return errors;
 
   };
@@ -28,7 +28,7 @@ class Form extends Component {
   };
 
   handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault();    
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
@@ -37,7 +37,7 @@ class Form extends Component {
   };
 
   handleChange = ({ currentTarget: input }) => {
-    const errors = { ...this.state.errors };
+      const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;
     else delete errors[input.name];
@@ -74,13 +74,14 @@ class Form extends Component {
   renderInput(type,name, label, value) {
     const { data, errors } = this.state;   
     return (
-      <Input
+      <Input 
         type={type}
         name={name}
         value={value!=""?value:data[name]}
         label={label}
         onChange={this.handleChange}
         error={errors[name]}
+        
        
       />
     );

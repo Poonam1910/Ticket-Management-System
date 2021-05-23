@@ -15,3 +15,7 @@ export const DELETE_USER='DELETE_USER'
 export const UPDATE_USER='UPDATE_USER'
 export const  TOGGLE_ROLE='TOGGLE_ROLE'
 export const TOGGLE_USER='TOGGLE_USER'
+
+//login
+export const LOGIN='LOGIN'
+export const LOGOUT='LOGOUT'

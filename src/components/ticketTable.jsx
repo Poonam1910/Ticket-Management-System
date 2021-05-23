@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import { connect } from 'react-redux'; 
 import { deleteTicket  } from '../actions/ticketActions';
 import Moment from "react-moment";
-import 'moment/locale/en-sg'
+//import 'moment/locale/en-sg'
 //import moment from "moment";
 
 class TicketTable extends Component {  
@@ -31,7 +31,7 @@ class TicketTable extends Component {
         content: ticket => (
           <button  
            className="btn btn-danger btn-sm" 
-           disabled={this.props.role ==='user'}
+           disabled={this.props.userRole !='Administrator'}
            onClick={() => {
               if (window.confirm('Are you sure you want to delete this Ticket?'))
               this.props.deleteTicket(ticket._id)}}           
@@ -59,9 +59,8 @@ class TicketTable extends Component {
  
 const mapStateToProps = (state) => {
   return {
-    role: state.auth.role,
-    department: state.auth.department,
-    user: state.auth.user,
+    userRole: state.authenticate?state.authenticate.userRole:'',
+    userName: state.authenticate?state.authenticate.userName:'',    
     ticketTypes:state.tickets.types,    
     priorities:state.tickets.priorities  
   };

@@ -85,10 +85,13 @@ class UserList extends Component {
          <Table style={{"border":"outset"}}>
              <tbody>
              <tr>
-             <td><Search
-          value={this.state.search}
-          onChange={this.updateSearch.bind(this)}          
-         />    </td>
+             <td>
+               <Search
+                value={this.state.search}
+                onChange={this.updateSearch.bind(this)} 
+                placeholder="Search By Name"         
+              />   
+               </td>
              </tr>
              </tbody>  
            </Table>
@@ -126,8 +129,8 @@ class UserList extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-      role: state.auth.role,     
-      user: state.auth.user,
+      // role: state.auth.role,     
+      // user: state.auth.user,
       tickets: state.tickets.tickets,
       users: state.users.users,
     };

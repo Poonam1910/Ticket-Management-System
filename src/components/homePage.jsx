@@ -1,6 +1,6 @@
 import React,{ Fragment } from 'react';
 import Background from '../img/helpdeskTicketSystem.jpg'
-
+import { connect } from 'react-redux';
 class HomePage extends React.Component {
   getStyle = () => {
     return {
@@ -27,7 +27,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <Fragment>
-        <div className="container pusher">
+        <div className="container pusher" style={{paddingBottom:"25px"}}>
           <div id="homeImage"
             className="ui vertical masthead center aligned segment"
             style={this.getStyle()}
@@ -37,7 +37,7 @@ class HomePage extends React.Component {
                 className="ui text container"
                 style={this.getBlurbStyle('#fff')}
               >
-                <h1 className="ui huge header">SPARES CNX</h1>
+                <h1 className="ui huge header" style={{cursor:"none"}}>SPARES CNX</h1>
                 <h2> Simple Ticketing System</h2>                
               </div>
             </div>
@@ -48,4 +48,14 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+
+const mapStateToProps = (state) => {
+  return { 
+    userSignedIn: state.authenticate?state.authenticate.userSignedIn:false,
+    userRole: state.authenticate?state.authenticate.userRole:'',
+    userName: state.authenticate?state.authenticate.userName:''
+  };
+};
+
+export default connect(mapStateToProps, {})(HomePage)
+

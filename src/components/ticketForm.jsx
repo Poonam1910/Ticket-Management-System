@@ -1,8 +1,7 @@
 import  React  from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import { Badge,ButtonGroup} from "reactstrap"
-import {Row,Col,Container} from 'react-bootstrap'
+import { Badge,Row,Col,Container} from "reactstrap"
 import { fetchTicket,addTicket,updateTicket } from '../actions/ticketActions';
 import { fetchUsers } from '../actions/userActions';
 import { connect } from 'react-redux';
@@ -55,8 +54,7 @@ class TicketForm extends Form {
       {
         const data =this.mapToViewModel(this.props.ticket.data) ;
         this.setState({ data});
-        console.log(this.role)
-       const availableStatus= this.role=='Administrator'?
+       const availableStatus= this.props.userRole=='Administrator'?
            this.props.statuses.filter(x=>x.value!==1 && x.value!=3 ):
            this.props.statuses.filter(x=>x.value!==1)
         this.setState({taskStatuses:availableStatus})
@@ -99,7 +97,7 @@ class TicketForm extends Form {
    const isNew = this.props.match.params.id==="new";
    const{data:ticket}=this.state;
     return (  
-       <Container fluid="md">      
+       <Container fluid="md" style={{paddingBottom:"25px"}}>      
       <Row>
           <Col >
             <h1 style={{textAlign:"center"}}> Ticket </h1>
@@ -109,16 +107,6 @@ class TicketForm extends Form {
                </h2>:''}
             </Badge>
          </Col>
-         <Col>
-         {/* <ButtonGroup>
-          {(isNew && !!ticket)?  this.renderButton("Create"):
-                           this.renderButton("Save")}        
-        <button className="btn btn-danger" to ={`/ticket/new`}  style={{paddingLeft:"10px"}}                           
-        > Cancel
-        </button>  
-       </ButtonGroup>*/}
-        </Col> 
-         
        </Row>
       <div className="form-body"> 
         <form  onSubmit={this.handleSubmit} >   
@@ -145,23 +133,19 @@ class TicketForm extends Form {
           </Col>
         </Row> 
         <Row>
-          <Col md={{ span: 3,  }}>
+          <Col md={{ span: 3  }}>
           {this.renderSelect("assigneeId", "Assignee", 
                 this.props.users,(!isNew && !! ticket)?ticket.assigneeId:"")} 
           </Col>
-          <Col md={{ span: 3, offset: 1 }}>
+          <Col md={{ span: 3 }}>
           {this.renderSelect("statusId", "Status", 
                 this.state.taskStatuses,(!isNew && !!ticket)?ticket.statusId:1)}
           </Col>
         </Row> 
        <br/> 
-       <ButtonGroup>
        {(isNew && !!ticket)?  this.renderButton("Create"):
-                           this.renderButton("Save")}        
-        <button className="btn btn-danger" to ={`/ticket/new`}  style={{paddingLeft:"10px"}}                           
-        > Cancel
-        </button>  
-       </ButtonGroup> 
+                           this.renderButton("Save")}  
+      
         </form>
       </div>
       </Container>
@@ -170,9 +154,7 @@ class TicketForm extends Form {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    role: state.auth.role,
-    user: state.auth.user,
+  return {   
     users: state.users.users,
     ticketTypes:state.tickets.types,
     priorities:state.tickets.priorities ,

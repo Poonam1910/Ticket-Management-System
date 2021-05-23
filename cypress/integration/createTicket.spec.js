@@ -1,4 +1,3 @@
-import React from "React"
 
 describe ('createNewTicket', () => {
     beforeEach(()=>{
@@ -10,10 +9,12 @@ describe ('createNewTicket', () => {
         });
       
        cy.visit('/')
-      .get('#SignInAdmin',{ timeout: 10000 })
-      .click()
-      .get('a:first')
-      .click()
+       .get('#login',{ timeout: 10000 })
+       .click()
+       .get('#userName').type('admin')
+       .get('#password').type('admin{enter}')
+       .get('a:first')
+       .click() 
       .get('.btn-primary',{ timeout: 10000 })   
       .and('contain', 'Create Ticket')
       .click()
@@ -22,13 +23,13 @@ describe ('createNewTicket', () => {
     //auto focus  description Create Ticket
     it('auto focus input on description', () => {
         cy.focused()
-        .should('have.attr','type', 'text')
+        .should('have.attr','id', 'description')
     })
 
   //default value set in Create Ticket
     it('Check Default value in Create Ticket Form',()=>{   
         cy.get("form")   
-        .get('input[name=description]').should('contain','')
+        .get('textarea[name=description]').should('have.value','')
         .get('select[id=projectName]').should('contain','Project-test')
         .get('select[id=typeId]').should('contain','Type 1')
         .get('select[id=priorityId]').should('contain','P1')
@@ -55,7 +56,7 @@ describe ('createNewTicket', () => {
   //Check all fields can set value in Create Ticket
     it('Check all fields can set value in Create Ticket',()=>{   
       cy.get("form")   
-      .get('input[name=description]').type('test description')
+      .get('textarea[name=description]').type('test description')
       .get('select[id=projectName]').select('Project-test')
       .get('select[id=typeId]').select('Type 2')
       .get('select[id=priorityId]').select('P2')
@@ -84,7 +85,7 @@ describe ('createNewTicket', () => {
       ]).as('newTicket')
 
       cy.get("form")   
-      .get('input[name=description]').type('test description').should('contain','')
+      .get('textarea[name=description]').type('test description').should('contain','')
       .get('select[id=projectName]').select('Project-test')
       .get('select[id=typeId]').select('Type 2')
       .get('select[id=priorityId]').select('P2')

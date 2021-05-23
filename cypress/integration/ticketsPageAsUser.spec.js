@@ -1,11 +1,13 @@
-describe('TicketList', () => {
+describe('TicketList For User', () => {
 
   beforeEach(() => {  
     cy.visit('/')
-    .get('#SignInUser',{ timeout: 10000 })
+    .get('#login',{ timeout: 10000 })
     .click()
+    .get('#userName').type('user')
+    .get('#password').type('user{enter}')
     .get('a:first')
-    .click()      
+    .click()       
   }) 
  
   //create-ticket  -user
@@ -36,16 +38,19 @@ describe('TicketList', () => {
         "_id":1,
         "title":"INC1",
         "description":"test system"  ,
-        "projectName":'test'    
+        "projectName":'test'  
+        ,"updatedAt":new Date()   
       }
     ])
     cy.visit('/')
-    .get('#SignInUser',{ timeout: 10000 })
+    .get('#login',{ timeout: 10000 })
     .click()
+    .get('#userName').type('user')
+    .get('#password').type('user{enter}')
     .get('a:first')
-    .click()
+    .click()       
     cy.get('#searchTxt',{ timeout: 10000 }) 
-    .should('have.attr','placeholder','Search Ticket') 
+    .should('have.attr','placeholder','Search By Title, Description and Project') 
     .type('test system1{enter}') 
     .get('#dTable tbody tr').should('not.exist')    
   })   
@@ -56,16 +61,19 @@ describe('TicketList', () => {
     {
       "_id":1,
       "title":"INC1",
-      "description":"test system"      
+      "description":"test system"  ,
+      "updatedAt":new Date()      
     }
   ])
-   cy.visit('/')
-  .get('#SignInUser',{ timeout: 10000 })
+  cy.visit('/')
+  .get('#login',{ timeout: 10000 })
   .click()
+  .get('#userName').type('admin')
+  .get('#password').type('admin{enter}')
   .get('a:first')
   .click()
   cy.get('#searchTxt',{ timeout: 10000 }) 
-  .should('have.attr','placeholder','Search Ticket') 
+  .should('have.attr','placeholder','Search By Title, Description and Project') 
   .type('test system{enter}') 
   .get('#dTable tbody tr').should('have.length',1)    
 }) 
@@ -74,10 +82,12 @@ describe('TicketList', () => {
 //check tickets count with empty response 
 it('Ticket Table count with Empty response/In case of Error ', () => { 
   cy.visit('/')
-  .get('#SignInUser',{ timeout: 10000 })
+  .get('#login',{ timeout: 10000 })
   .click()
+  .get('#userName').type('user')
+  .get('#password').type('user{enter}')
   .get('a:first')
-  .click()  
+  .click()       
   cy.intercept('GET', 'http://localhost:8082/Tickets', [])
   cy.get('#dTable tr').should('not.exist');  
 })
@@ -92,14 +102,17 @@ it('Ticket Table count equal to list ', () => {
       "assignedId":"",
       "typeId":1,
       "statusId":1,
-      "priorityId":1  
+      "priorityId":1 ,
+      "updatedAt":new Date()   
     }
   ])
   cy.visit('/')
-  .get('#SignInUser',{ timeout: 10000 })
+  .get('#login',{ timeout: 10000 })
   .click()
+  .get('#userName').type('user')
+  .get('#password').type('user{enter}')
   .get('a:first')
-  .click()   
+  .click()         
   cy.get('#dTable tr').should('have.length',2);  
 })
 
@@ -113,14 +126,17 @@ it('check tickets count with Delete Ticket  Not Enable for User ', () => {
       "assignedId":"",
       "typeId":1,
       "statusId":1,
-      "priorityId":1  
+      "priorityId":1 ,
+      "updatedAt":new Date()   
     }
   ])
   cy.visit('/')
-  .get('#SignInUser',{ timeout: 10000 })
+  .get('#login',{ timeout: 10000 })
   .click()
+  .get('#userName').type('user')
+  .get('#password').type('user{enter}')
   .get('a:first')
-  .click()   
+  .click()         
   cy.get('#dTable tr:last td:last')
   .should('be.visible')
   })

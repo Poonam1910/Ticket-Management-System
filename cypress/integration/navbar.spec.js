@@ -1,4 +1,5 @@
 import React from "React"
+const tokenKey = "token";
 
 describe ('Home Page', () => {
 
@@ -8,18 +9,20 @@ describe ('Home Page', () => {
     
       //Load Home
     it('Navigation Menu- Home', () => {
-        cy.get('h3', { timeout: 10000 })
+        cy.get('h5', { timeout: 10000 })
             .should('be.visible')
             .and('contain', 'Home')
     })
 
     //Load via SignIn Admin
-    it('Navigation Menu- SignInAdmin', () => {
+    it('Navigation Menu- LogIn As Admin', () => {
         cy.get('#SimAuthBar', { timeout: 10000 })
-        cy.get('#SignInAdmin',{ timeout: 10000 })
+        cy.get('#login',{ timeout: 10000 })
             .should('be.visible')
-            .and('contain', 'Sign in (Admin)')
-            .click().end().should('be.null')
+            .and('contain', 'Log In').click()
+            .get('#userName').type('admin')
+            .get('#password').type('admin{enter}')
+            .end().should('be.null')
             .get('a', { timeout: 10000 })
             .should('be.visible')
             .should('have.attr', 'href', '/tickets')
@@ -30,21 +33,23 @@ describe ('Home Page', () => {
             .get('label',{ timeout: 10000 })
             .should('be.visible')      
             .and('contain', 'Administrator')  
-            .get('button', { timeout: 10000 })
+            .get('a', { timeout: 10000 })
             .should('be.visible')
-            .and('contain', 'Sign Out')                           
+            .and('contain', 'Log Out')                           
         cy.get('.pusher',{ timeout: 10000 })
             .should('be.visible')
     })
     
 
     //Load via SignIn user
-    it('Navigation Menu- SignInuser', () => {
+    it('Navigation Menu- Login As user', () => {
         cy.get('#SimAuthBar', { timeout: 10000 })      
-        cy.get('#SignInUser',{ timeout: 10000 })
+        cy.get('#login',{ timeout: 10000 })             
             .should('be.visible')
-            .and('contain', 'Sign in (User)')
-            .click().end().should('be.null')
+            .and('contain', 'Log In').click()
+            .get('#userName').type('user')
+            .get('#password').type('user{enter}')
+            .end().should('be.null')
             .get('a', { timeout: 10000 })
             .should('be.visible')
             .should('have.attr', 'href', '/tickets')
@@ -55,9 +60,9 @@ describe ('Home Page', () => {
             .get('label',{ timeout: 10000 })
             .should('be.visible')
             .and('contain', 'user')  
-            .get('button', { timeout: 10000 })
+            .get('a', { timeout: 10000 })
             .should('be.visible')
-            .and('contain', 'Sign Out')   
+            .and('contain', 'Log Out')   
         cy.get('.pusher',{ timeout: 10000 })
             .should('be.visible')            
     })

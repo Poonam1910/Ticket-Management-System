@@ -1,4 +1,4 @@
-describe ('createNewTicket', () => {
+describe ('DeleteTicket', () => {
     beforeEach(()=>{
       cy.intercept('DELETE', 'http://localhost:8082/Tickets/*',
       "Ticket deleted."
@@ -11,7 +11,8 @@ describe ('createNewTicket', () => {
         "assignedId":"",
         "typeId":1,
         "statusId":1,
-        "priorityId":1  
+        "priorityId":1  ,
+        "updatedAt":new Date() 
       }
     ])
       cy.exec("npm run db:reset && npm run db:seed",
@@ -21,20 +22,25 @@ describe ('createNewTicket', () => {
         console.log("success", r);
         });
 
-      cy.visit('/')
-      .get('#SignInAdmin',{ timeout: 10000 })
-      .click()
-      .get('a:first')
-      .click()      
+        cy.visit('/')
+        .get('#login',{ timeout: 10000 })
+        .click()
+        .get('#userName').type('admin')
+        .get('#password').type('admin{enter}')
+        .get('a:first')
+        .click()      
     })
 
     // delete Ticket
-    it('Check Deete Ticket Request',()=>{ 
+    it('Check Delete Ticket Request',()=>{ 
+     
       cy.visit('/')
-      .get('#SignInAdmin',{ timeout: 10000 })
+      .get('#login',{ timeout: 10000 })
       .click()
+      .get('#userName').type('admin')
+      .get('#password').type('admin{enter}')
       .get('a:first')
-      .click()   
+      .click()  
       cy.get('#dTable tr:last td:last')
       .click()
       cy.get('#dTable tr').should('not.exist')
