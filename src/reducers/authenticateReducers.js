@@ -2,6 +2,7 @@ import {
   LOGIN, LOGOUT
   } from '../actions/types';
   
+  //Used for login /Logout
   const authenticateReducers= (state = {}, action) => {
     switch (action.type) {
       case LOGIN:         

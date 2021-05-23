@@ -4,6 +4,8 @@ import {
   SIGN_OUT
 } from '../actions/types';
 
+
+//USed for Simulation- Admin
 const authReducers= (state = {}, action) => {
   switch (action.type) {
     case SIGN_IN_ADMIN:

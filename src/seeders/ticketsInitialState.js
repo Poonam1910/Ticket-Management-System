@@ -14,7 +14,6 @@ export const INITIAL_STATE_TICKETS = {
   ticket:{},
   priorities:
    [
- // { value: 0, label: "All Priority" },
   { value: 3, label: "P3" },
   { value: 2, label: "P2"},
   { value: 1, label: "P1"}],
@@ -27,10 +26,9 @@ export const INITIAL_STATE_TICKETS = {
   { value: 4, label: "Resolved"}],
 
    types:[
-       //{ value: 0, label: "All Types" },
-        { value: 1, label: "Type 1" },
-        { value: 2, label: "Type 2"},
-        { value: 3, label: "Type 3"}],
+  { value: 1, label: "Type 1" },
+  { value: 2, label: "Type 2"},
+  { value: 3, label: "Type 3"}],
  
   projects:[{ value: "Project-test", label: "Project-test" }],
  

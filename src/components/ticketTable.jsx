@@ -4,9 +4,6 @@ import {Link} from "react-router-dom";
 import { connect } from 'react-redux'; 
 import { deleteTicket  } from '../actions/ticketActions';
 import Moment from "react-moment";
-//import 'moment/locale/en-sg'
-//import moment from "moment";
-
 class TicketTable extends Component {  
  
     columns = [    

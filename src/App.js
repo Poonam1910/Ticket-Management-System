@@ -45,17 +45,4 @@ const App = () => {
   );
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     role: state.auth.role,
-//     department: state.auth.department,
-//     user: state.auth.user,
-//     ticketTypes:state.tickets.types,    
-//     priorities:state.tickets.priorities  
-//   };
-// };
- 
-// //export default connect(mapStateToProps,{})(App);
-
-
 export default App;

@@ -129,8 +129,6 @@ class UserList extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-      // role: state.auth.role,     
-      // user: state.auth.user,
       tickets: state.tickets.tickets,
       users: state.users.users,
     };

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DTable from "./common/dTable";
+import Moment from "react-moment";
 
 class UserTable extends Component {  
  
@@ -8,7 +9,11 @@ class UserTable extends Component {
         path: "name", label: "Name"},
       { path: "email", label: "Email" },
       { path: "role", label: "Role" },
-      { path: "updatedAt", label: "Updated Date" }
+      { path: "updatedAt", label: "Updated Date" 
+     
+      ,content:user=>
+       <Moment  locale date={user.updatedAt} format="DD/MM/YYYY HH:mm"></Moment>
+    },
   ];    
 
   render() {
@@ -24,20 +29,6 @@ class UserTable extends Component {
   }
 }
 
- 
-// const mapStateToProps = (state) => {
-//   return {
-//     // role: state.auth.role,
-//     // department: state.auth.department,
-//     // user: state.auth.user,
-//     // ticketTypes:state.tickets.types,    
-//     // priorities:state.tickets.priorities  
-//   };
-// };
- 
-// export default connect(mapStateToProps, {
-//   //deleteTicket
-//   })(UserTable);
 export default UserTable
 
 
