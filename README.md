@@ -1,8 +1,6 @@
 # Ticket Incident Management System
 TMS is built using MERN stack( Mongo Express React and Node). 
 
-![image](https://user-images.githubusercontent.com/42572785/119273734-d277e880-bc3e-11eb-8582-2e8307413741.png)
-
  # About The Project
 Build an incident management service should have the following features: 
 •	Raise an incident as an admin 
@@ -16,18 +14,18 @@ Build an incident management service should have the following features:
  # Dependencies
 •	Reactjs- Redux
 •	nodejs
-•	mongodb [Note : This is running in cluster mode under xxxx]
+•	mongodb [Note : This is running in https://cloud.mongodb.com cluster]
 
  # Architecture
  
+![image](https://user-images.githubusercontent.com/42572785/119273734-d277e880-bc3e-11eb-8582-2e8307413741.png)
+
 # Getting Started
 # Prerequisites
 This is an example of how to list things you need to use the software and how to install them.
 Node: npm install node@latest -g or download LTS version from node site
 
 ![image](https://user-images.githubusercontent.com/42572785/119273702-b5431a00-bc3e-11eb-8090-7a98411429a6.png)
-
-
 
 # Reactjs Frontend
 # Installation
@@ -101,10 +99,7 @@ Credentials for logging in
 ![image](https://user-images.githubusercontent.com/42572785/119273826-47e3b900-bc3f-11eb-80e3-929a7f46d03d.png)
 ![image](https://user-images.githubusercontent.com/42572785/119273827-4adea980-bc3f-11eb-881b-98410d4f7d0b.png)
 
- 
-
- 
- 
+  
 # Testing Screen Shot 
  
  ![image](https://user-images.githubusercontent.com/42572785/119273833-53cf7b00-bc3f-11eb-8fc3-f6b0c99cb337.png)
