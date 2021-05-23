@@ -1,73 +1,161 @@
-#Please refer the Incident_Mgt_System.docx for more details
+# Ticket Incident Management System
+TMS is built using MERN stack( Mongo Express React and Node). 
 
-# Getting Started with Create React App
+# Please refer the Incident_Mgt_System.docx 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ # About The Project
+Build an incident management service should have the following features: 
+•	Raise an incident as an admin 
+•	Assign the incident to a user 
+•	Acknowledge the incident as a user 
+•	Resolve the incident as a user 
+•	Read details about a certain incident 
+•	Index incidents (includes filtering, sorting by date created/updated and incident type and paging)
+•	Delete an incident
 
-## Available Scripts
+ # Dependencies
+•	Reactjs- Redux
+•	nodejs
+•	mongodb [Note : This is running in cluster mode under xxxx]
 
-In the project directory, you can run:
+ # Architecture
+ 
+Getting Started
+Prerequisites
+This is an example of how to list things you need to use the software and how to install them.
+Node: npm install node@latest -g or download LTS version from node site
 
-### `yarn start`
+![image](https://user-images.githubusercontent.com/42572785/119273702-b5431a00-bc3e-11eb-8090-7a98411429a6.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+Reactjs Frontend
+Installation
+Clone the repo
+git clone https://github.com/Poonam1910/Ticket-Management-System.git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Install NPM packages
+npm install
 
-### `yarn build`
+Build the project:
+npm run build
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run the cypress test:
+npm test
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Run the project:
+npm start
+ 
+Installation with docker:
+Clone the repo:
+git clone https://github.com/Poonam1910/Ticket-Management-System.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Build the docker image:
+docker build -t <image_name>/<image_tag> -f Dockerfile.prod .
 
-### `yarn eject`
+Run the docker image:
+docker run --name <container_name> -p 80:80 -d <image_name>/<image_tag>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Nodejs backend
+Installation
+Clone the repo
+git clone https://github.com/Poonam1910/Ticket-Management-Server-API.git
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install NPM packages
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Build the project:
+npm run build
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Run the jest test:
+npm test
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Run the project:
+npm run app
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Installation with docker:
+Clone the repo:
+git clone https://github.com/Poonam1910/Ticket-Management-Server-API.git
 
-### Code Splitting
+Build the docker image:
+docker build -t <image_name>/<image_tag> -f Dockerfile.prod .
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Run the docker image:
+docker run --name <container_name> -p 8082:8082 -d <image_name>/<image_tag>
 
-### Analyzing the Bundle Size
+Using docker-compose:
+Start the frontend and backend services:
+docker-compose -f <docker-compose.yml> up -d
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Stop the frontend and backend services:
+docker-compose -f < docker-compose.yml> down  
+Usage
+Credentials for logging in
+UserType	Username	Password
+Admin	Admin	admin
+User	User	user
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Application Screenshots
+ 
 
-### `yarn build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ 
 
+
+ 
+ 
+Testing Screen Shot 
+ 
+ 
+
+
+Request/ Response
+CRUD operation is available for Tickets through UI , Similar can be replicated for User. 
+USER/TICKET CRUD API are available in node project.
+Sample json request to create new user
+
+Default port exposed for API: 8082 and for UI as 3000. 
+Please change the port & host based in application config files based on your exposed Ep.
+
+User Create: http://localhost:XXXX/users/create
+
+User
+Get: http://localhost:XXXX/users
+Post: http://localhost:XXXX/users/create
+Put: http://localhost:XXXX/users/<Id>
+Delete: http://localhost:XXXX/users/XXX
+Json:
+{
+"name":"user_6",
+"role":"user",
+"email":"user_6@test.com",
+"loginName":"user_6"
+}
+
+
+Tickets
+Get: http://localhost:XXXX/tickets
+Post: http://localhost:XXXX/tickets/create
+Put: http://localhost:XXXX/tickets/<Id>
+Delete: http://localhost:XXXX/tickets/XXX
+
+Json:
+
+{"description": "tes", "projectName": "Project-test", "assigneeId": "60a0c8c9eb957939600487a6", 
+"priorityId": 1, "typeId": 1,"statusId":1}
+
+
+
+Contributing
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+1.	Fork the Project
+2.	Create your Feature Branch (git checkout -b feature/AmazingFeature)
+3.	Commit your Changes (git commit -m 'Add some AmazingFeature')
+4.	Push to the Branch (git push origin feature/AmazingFeature)
+5.	Open a Pull Request
