@@ -12,7 +12,7 @@ import { fetchUsers } from '../actions/userActions';
 class UserList extends Component {
   state = {
     currentPage: 1,
-    pageSize: 2,
+    pageSize: 5,
     sortColumn: { path: "updatedAt", order: "asc" },
     search:"",
     users:[]
