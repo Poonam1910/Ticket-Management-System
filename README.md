@@ -1,8 +1,6 @@
 # Ticket Incident Management System
 TMS is built using MERN stack( Mongo Express React and Node). 
 
-# Please refer the Incident_Mgt_System.docx 
-
 ![image](https://user-images.githubusercontent.com/42572785/119273734-d277e880-bc3e-11eb-8582-2e8307413741.png)
 
  # About The Project
